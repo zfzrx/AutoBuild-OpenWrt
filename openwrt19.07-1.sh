@@ -8,8 +8,12 @@ sed -i 's|https://github.com/Lienol/openwrt-luci.git;17.01|https://github.com/co
 # 增加软件包
 #sed -i 's#github.com/immortalwrt/packages.git;openwrt-21.02#github.com/yuos-bit/other.git;immortalwrt-packages-21.02#' feeds.conf.default
 #sed -i 's#github.com/immortalwrt/luci.git;openwrt-21.02#github.com/yuos-bit/other.git;immortalwrt-luci-21.02#' feeds.conf.default
-sed -i '$a src-git helloworld https://github.com/fw876/helloworld.git;master' feeds.conf.default
-sed -i '$a src-git small8 https://github.com/kenzok8/openwrt-packages.git;master' feeds.conf.default
+#sed -i '$a src-git helloworld https://github.com/fw876/helloworld.git;master' feeds.conf.default
+#sed -i '$a src-git small8 https://github.com/kenzok8/openwrt-packages.git;master' feeds.conf.default
+# helloworld: 锁定到 2022 年中兼容 19.07 的最后一个 commit（含 xray-core，无 Rust 包）
+sed -i '$a src-git helloworld https://github.com/fw876/helloworld.git^ba24e94b' feeds.conf.default
+# kenzok8: 锁定到兼容 19.07 的旧版本（含 eqos/smartdns）
+sed -i '$a src-git small8 https://github.com/kenzok8/openwrt-packages.git^d0cfd33' feeds.conf.default
 
 
 # 覆盖源码
