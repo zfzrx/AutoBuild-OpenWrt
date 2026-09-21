@@ -138,16 +138,22 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: 更新插件
-      run: |
-        cd openwrt
-        ./scripts/feeds clean
-        ./scripts/feeds update -a
+     - name: 更新插件
+       run: |
+         cd openwrt
+         ./scripts/feeds clean
+        ./scripts/feeds update -a || true
+        # 删除 19.07 无法解析的新版(Rust/新语法)包
+        rm -rf feeds/helloworld/dns2socks-rust \
+               feeds/helloworld/shadow-tls \
+               feeds/helloworld/shadowsocks-rust \
+               feeds/helloworld/tuic-client \
+               feeds/small8/smartdns
 
-    - name: 安装插件
-      run: |
-        cd openwrt
-        ./scripts/feeds install -a
+     - name: 安装插件
+       run: |
+         cd openwrt
+        ./scripts/feeds install -a || true
 
     - name: 运行第二脚本
       run: |
