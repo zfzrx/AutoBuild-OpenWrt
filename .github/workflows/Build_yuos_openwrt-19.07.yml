@@ -137,9 +137,9 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
-     - name: 更新插件
-       run: |
+        
+    - name: 更新插件
+      run: |
          cd openwrt
          ./scripts/feeds clean
          ./scripts/feeds update -a
@@ -151,8 +151,8 @@ jobs:
                    feeds/helloworld/tuic-client \
                    feeds/small8/smartdns
 
-     - name: 安装插件
-       run: |
+    - name: 安装插件
+      run: |
          cd openwrt
          ./scripts/feeds install -a
          ./scripts/feeds install -a || true
