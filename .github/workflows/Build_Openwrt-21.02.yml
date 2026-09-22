@@ -7,9 +7,10 @@ on:
       model:
         description: '选择机型'
         required: true
-        default: 'miwifi-4' 
+        default: 'miwifi-4c' 
         type: choice
         options:
+          - 'miwifi-4c'
           - 'miwifi-4'
           - 'MI-R3G'
           - 'Redmi_AC2100'
