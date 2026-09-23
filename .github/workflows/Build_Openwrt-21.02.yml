@@ -53,6 +53,7 @@ env:
   DIY_P2_SH: openwrt21.02-2.sh
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  MODEL: ${{ github.event.inputs.model }}
 
 jobs:
   build:
